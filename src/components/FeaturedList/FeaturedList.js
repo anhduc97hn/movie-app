@@ -3,11 +3,18 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import "./FeaturedList.css";
 import ContentModal from "../ContentModal/ContentModal"
-
+import { Box } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 function FeaturedList({ items }) {
+  const theme = useTheme();
   return (
-    <>
+    <Box  sx={{
+      display: 'none',
+      [theme.breakpoints.up('md')]: {
+        display: 'block',
+      },
+    }}>
       <Carousel
         showThumbs={false}
         autoPlay={true}
@@ -36,7 +43,7 @@ function FeaturedList({ items }) {
           </ContentModal>
         ))}
       </Carousel>
-    </>
+    </Box>
   );
 }
 
