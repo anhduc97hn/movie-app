@@ -18,7 +18,7 @@ const Gallery = ({ id, media_type }) => {
         onDragStart={handleDragStart}
         className="carouselItem__img"
       />
-      <b className="carouselItem__txt">{c?.name}</b>
+      <p className="carouselItem__txt">{c?.name}</p>
     </div>
   ));
 

@@ -68,19 +68,14 @@ export default function TransitionsModal({ children, media_type, id }) {
 
   return (
     <>
-      <div
-        className="media"
-        style={{ cursor: "pointer" }}
-        color="inherit"
-        onClick={handleOpen}
-      >
+      <div style={{ cursor: "pointer" }} color="inherit" onClick={handleOpen}>
         {children}
       </div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
-        style={{color: "white"}}
+        style={{ color: "white" }}
         onClose={handleClose}
         closeAfterTransition
         slots={{ backdrop: Backdrop }}
@@ -91,8 +86,8 @@ export default function TransitionsModal({ children, media_type, id }) {
         }}
       >
         <Fade in={open}>
-        <Box sx={style}>
-          {content && (
+          <Box sx={style}>
+            {content && (
               <div className="ContentModal">
                 <img
                   src={
@@ -122,9 +117,6 @@ export default function TransitionsModal({ children, media_type, id }) {
                     ).substring(0, 4)}
                     )
                   </span>
-                  {content.tagline && (
-                    <i className="tagline">{content.tagline}</i>
-                  )}
 
                   <span className="ContentModal__description">
                     {content.overview}
@@ -145,7 +137,7 @@ export default function TransitionsModal({ children, media_type, id }) {
                   </Button>
                 </div>
               </div>
-          )}
+            )}
           </Box>
         </Fade>
       </Modal>

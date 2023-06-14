@@ -3,6 +3,7 @@ import "./Trending.css";
 import { useEffect, useState } from "react";
 import SingleContent from "../../components/SingleContent/SingleContent";
 import CustomPagination from "../../components/Pagination/CustomPagination";
+import FeaturedList from "../../components/FeaturedList/FeaturedList";
 
 const Trending = () => {
   const [page, setPage] = useState(1);
@@ -14,17 +15,22 @@ const Trending = () => {
     );
 
     setContent(data.results);
+
   };
 
   useEffect(() => {
     window.scroll(0, 0);
     fetchTrending();
     // eslint-disable-next-line
+    return () => {
+      setContent([])
+    }
   }, [page]);
 
   return (
     <div>
-      <span className="pageTitle">Trending Today</span>
+      <FeaturedList items={content} sx={{padding: 0, margin: 0}}/>
+      <span className="pageTitle">🔥 Trending Today 🔥</span>
       <div className="trending">
         {content &&
           content.map((c) => (

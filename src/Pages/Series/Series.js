@@ -4,6 +4,7 @@ import Genres from "../../components/Genres/Genres";
 import CustomPagination from "../../components/Pagination/CustomPagination";
 import SingleContent from "../../components/SingleContent/SingleContent";
 import useGenre from "../../hooks/useGenre";
+import FeaturedList from "../../components/FeaturedList/FeaturedList";
 
 const Series = () => {
   const [genres, setGenres] = useState([]);
@@ -12,6 +13,9 @@ const Series = () => {
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
   const genreforURL = useGenre(selectedGenres);
+
+  const tvContent = content.map(item => ({...item, media_type: "tv"}));
+  console.log("tvContent", tvContent)
 
   const fetchSeries = async () => {
     const { data } = await axios.get(
@@ -22,15 +26,22 @@ const Series = () => {
     // console.log(data);
   };
 
+ 
+
   useEffect(() => {
     window.scroll(0, 0);
     fetchSeries();
     // eslint-disable-next-line
+    return () => {
+      setContent([])
+      setNumOfPages()
+    }
   }, [genreforURL, page]);
 
   return (
     <div>
-      <span className="pageTitle">Discover Series</span>
+      <FeaturedList items={tvContent} sx={{padding: 0, margin: 0}} />
+      <span className="pageTitle">🌈 Discover Series 🌈</span>
       <Genres
         type="tv"
         selectedGenres={selectedGenres}

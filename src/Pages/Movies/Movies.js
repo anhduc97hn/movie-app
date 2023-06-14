@@ -4,6 +4,7 @@ import Genres from "../../components/Genres/Genres";
 import SingleContent from "../../components/SingleContent/SingleContent";
 import useGenre from "../../hooks/useGenre";
 import CustomPagination from "../../components/Pagination/CustomPagination";
+import FeaturedList from "../../components/FeaturedList/FeaturedList"
 
 const Movies = () => {
   const [genres, setGenres] = useState([]);
@@ -12,7 +13,9 @@ const Movies = () => {
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
   const genreforURL = useGenre(selectedGenres);
-  // console.log(selectedGenres);
+
+  const movieContent = content.map(item => ({...item, media_type: "movie"}));
+  //  console.log("movieContent", movieContent)
 
   const fetchMovies = async () => {
     const { data } = await axios.get(
@@ -20,17 +23,24 @@ const Movies = () => {
     );
     setContent(data.results);
     setNumOfPages(data.total_pages);
+
   };
+
 
   useEffect(() => {
     window.scroll(0, 0);
     fetchMovies();
     // eslint-disable-next-line
+    return () => {
+      setContent([])
+      setNumOfPages()
+    }
   }, [genreforURL, page]);
 
   return (
     <div>
-      <span className="pageTitle">Discover Movies</span>
+      <FeaturedList items={movieContent} sx={{padding: 0, margin: 0}}/>
+      <span className="pageTitle">&#127909; Discover Movies &#127909;</span>
       <Genres
         type="movie"
         selectedGenres={selectedGenres}

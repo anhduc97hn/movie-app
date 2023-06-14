@@ -30,7 +30,7 @@ navigate("/")
   
 
   return (
-    <Box sx={{ width: "100%", position: "fixed",  bottom: 0, zIndex: 100  }}>
+    <Box sx={{ width: "100%", position: "fixed",  top: 0, zIndex: 100}}>
     <BottomNavigation
       value={value}
       onChange={(event, newValue) => {
