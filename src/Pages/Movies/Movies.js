@@ -31,10 +31,6 @@ const Movies = () => {
     window.scroll(0, 0);
     fetchMovies();
     // eslint-disable-next-line
-    return () => {
-      setContent([])
-      setNumOfPages()
-    }
   }, [genreforURL, page]);
 
   return (

@@ -45,10 +45,6 @@ import {
       window.scroll(0, 0);
       fetchSearch();
       // eslint-disable-next-line
-      return () => {
-        setContent([])
-        setNumOfPages()
-      }
     }, [type, page]);
   
     return (

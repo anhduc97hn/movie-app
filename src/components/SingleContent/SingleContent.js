@@ -15,7 +15,7 @@ const SingleContent = ({
     <ContentModal media_type={media_type} id={id}>
       <div className="media">
       <Badge
-        badgeContent={vote_average}
+        badgeContent={(Math.ceil(vote_average *10) /10).toFixed(1)}
         color={vote_average > 6 ? "primary" : "secondary"}
       />
       <img
@@ -23,10 +23,10 @@ const SingleContent = ({
         src={poster ? `${img_300}${poster}` : unavailable}
         alt={title}
       />
-      <b className="title">{title}</b>
+      <h2 className="title">{title}</h2>
       <span className="subTitle">
         {media_type === "tv" ? "TV Series" : "Movie"}
-        <span className="subTitle">{date}</span>
+        <span>{date}</span>
       </span>
       </div>
     </ContentModal>

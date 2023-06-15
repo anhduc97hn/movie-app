@@ -32,10 +32,6 @@ const Series = () => {
     window.scroll(0, 0);
     fetchSeries();
     // eslint-disable-next-line
-    return () => {
-      setContent([])
-      setNumOfPages()
-    }
   }, [genreforURL, page]);
 
   return (
