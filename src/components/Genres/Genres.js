@@ -12,7 +12,7 @@ const Genres = ({
 }) => {
 
   const handleAdd = (genre) => {
-    setSelectedGenres([...selectedGenres, genre]);
+    setSelectedGenres([genre, ...selectedGenres]);
     setGenres(genres.filter((g) => g.id !== genre.id));
     setPage(1);
   };
@@ -21,7 +21,7 @@ const Genres = ({
     setSelectedGenres(
       selectedGenres.filter((selected) => selected.id !== genre.id)
     );
-    // setGenres([...genres, genre]);
+    setGenres([genre, ...genres, ]);
     setPage(1);
   };
 
